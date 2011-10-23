@@ -1,0 +1,32 @@
+- if post then
+  - post.errors.each do |k,v|
+    %p= v[0]
+
+%form{:method => "POST", :action => '/comment'}
+  %table
+    %tr
+      %td 名前
+      %td 
+        %input{:type => "text", :name => "name"}
+    %tr
+      %td タイトル
+      %td
+        %input{:type => "text", :name => "title"}
+    %tr
+      %td 内容
+      %td
+        %textarea{:name => "message", :cols => 60, :rows => 8}
+    %tr
+      %td
+      %td
+        %input{:type => "submit"}
+
+- @comments.each do |comment|
+  .comment
+    %h2= h comment.title
+    .info
+      %span.auther== by #{h comment.auther}
+      %span.date== (#{h comment.date})
+    .message
+      = comment.formatted_message
+= partial_haml :paginate

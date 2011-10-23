@@ -1,0 +1,73 @@
+body
+  margin: 0px 20%
+  padding: 0px
+    
+h1
+  margin: 1em
+
+form
+  border: 1px solid black
+  margin: 1em
+  padding: 0.5em
+
+.comment
+  border: 1px solid black
+  margin: 1em
+  padding: 0.5em
+    
+  h2
+    margin: 0px
+    font-size: medium
+    float: left
+
+  .info
+    span.name
+      padding-left: 0.5em
+      font-size: small
+    span.date
+      font-size: small
+
+  .message
+    margin-top: 1em
+
+.cl
+  clear: both
+
+ul
+  border: 0px
+  margin: 0px
+  padding: 0px
+
+#pagination-flickr
+  li
+    border: 0px
+    margin: 0px
+    padding: 0px
+    font-size: 11px
+    list-style: none
+  a
+    border: solid 1px #DDDDDD
+    margin-right: 2px
+  .previous-off, .next-off
+    color: #666666
+    display: block
+    float: left
+    font-weight: bold
+    padding: 3px 4px
+  .next a, .previous a
+    font-weight: bold
+    border: solid 1px #FFFFFF
+  .active
+    color: #ff0084
+    font-weight: bold
+    display: block
+    float: left
+    padding: 4px 6px
+  a:link, a:visited 
+    color: #0063e3
+    display: block
+    float: left
+    padding: 3px 6px
+    text-decoration: none
+  a:hover
+    border: solid 1px #666666
