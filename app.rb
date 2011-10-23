@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 require 'sinatra'
 require './model/comment.rb'
 require 'haml'
