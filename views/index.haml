@@ -25,8 +25,11 @@
 = partial_haml :paginate
 - @comments.each do |comment|
   .comment
-    %h2= h comment.title
     .info
+      - if comment.title.empty? then
+        %h2== (no title)
+      - else
+        %h2= h comment.title
       %span.auther== by #{h comment.auther}
       %span.date== (#{h comment.date})
     .message
