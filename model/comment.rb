@@ -11,8 +11,8 @@ class Comments < Sequel::Model
   unless table_exists?
     set_schema do
       primary_key :id
-      varchar(255) :auther
-      varchar(255) :title
+      String :auther
+      String :title
       text :body
       timestamp :posted_date
     end
