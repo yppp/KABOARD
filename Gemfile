@@ -4,6 +4,7 @@ gem 'thin', '1.2.7'
 
 gem 'haml'
 gem 'sass'
+gem 'compass'
 gem 'sequel'
 
 
