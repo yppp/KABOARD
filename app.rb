@@ -5,6 +5,8 @@ require 'sinatra'
 require './model/comment.rb'
 require 'haml'
 require 'sass'
+require 'coffee-script'
+
 
 configure do
   Compass.configuration do |config|
@@ -45,15 +47,22 @@ get '/style.css' do
   sass :style
 end
 
-get '/' do
+get '/', provides: 'html' do
   @comments = Comments.order_by(:posted_date.desc).paginate(1, 20)
   haml :index, locals: {post: nil}
 end
 
+get '/board', provides: 'json' do
+  content_type :json
+  @comments = Comments.order_by(:id.desc).paginate(1, 20)
+  @comments.to_json
+end
+
+
 get %r{/([\d]+)} do
   @page = params[:captures].first.to_i
   @comments = Comments.order_by(:id.desc).paginate(@page, 20)
-  haml :index, locals: {post: nil}
+  haml :posts
 end
 
 post '/comment' do
@@ -71,4 +80,9 @@ post '/comment' do
   end
 
 
+end
+
+
+get '/app.js' do
+  coffee :scri
 end

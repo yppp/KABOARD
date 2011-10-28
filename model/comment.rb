@@ -3,8 +3,10 @@ require 'sequel'
 
 Sequel.extension :pagination
 
-Sequel::Model.plugin(:schema)
-Sequel::Model.plugin(:validation_class_methods)
+Sequel::Model.plugin :schema
+Sequel::Model.plugin :validation_class_methods
+Sequel::Model.plugin :json_serializer
+
 Sequel.connect(ENV['DATABASE_URL'] || "sqlite://co.db")
 
 class Comments < Sequel::Model
