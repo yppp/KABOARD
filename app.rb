@@ -52,7 +52,7 @@ get '/', provides: 'html' do
   haml :index, locals: {post: nil}
 end
 
-get '/board', provides: 'json' do
+get '/board' do
   content_type :json
   @comments = Comments.order_by(:id.desc).paginate(1, 20)
   @comments.to_json
