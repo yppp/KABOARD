@@ -12,7 +12,6 @@ $ ->
         , 5000
 
         $("#comment-form").submit ->
-                $("#mit").attr("disabled", true);
                 $.ajax
                         type: 'POST'
                         url: '/comment'
@@ -24,5 +23,4 @@ $ ->
                                 $("#name").val ""
                                 $("#title").val ""
                                 $("#message").val ""
-                                $("#mit").attr("disabled", false);
                 false
