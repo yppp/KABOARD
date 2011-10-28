@@ -6,7 +6,7 @@ gem 'haml'
 gem 'sass'
 gem 'compass'
 gem 'sequel'
-
+gem 'coffee-script'
 
 group :test, :development do
   gem 'sqlite3'
