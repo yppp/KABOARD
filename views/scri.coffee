@@ -13,17 +13,17 @@ $ ->
 
         $("#comment-form").submit ->
                 $('#mit').attr("disabled", "disabled");
+                $(".spinner").append('<img src = "indicator.white.gif">')
                 $.ajax
                         type: 'POST'
                         url: '/comment'
                         data: {"name": $("#name").val(), "title": $("#title").val(), "message": $("#message").val()}
                         success: ->
-                                $(".spinner").append('<img src = "indicator.white.gif">')
                                 getpost()
-                                $(".spinner img").remove()
-                                $("#name").val ""
-                                $("#title").val ""
-                                $("#message").val ""
-                                $('#mit').removeAttr("disabled");
+                $(".spinner img").remove()
+                $("#name").val ""
+                $("#title").val ""
+                $("#message").val ""
+                $('#mit').removeAttr("disabled");
 
                 false
