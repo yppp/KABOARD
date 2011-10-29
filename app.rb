@@ -48,7 +48,7 @@ get '/style.css' do
   sass :style
 end
 
-get '/', provides: 'html' do
+get '/' do
   @comments = Comments.order_by(:posted_date.desc).paginate(1, 20)
   haml :index, locals: {post: nil}
 end
