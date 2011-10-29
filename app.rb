@@ -67,6 +67,7 @@ get %r{/([\d]+)} do
 end
 
 post '/comment' do
+  content_type :json
   post = Comments::new (
                         {auther: h(request[:name]),
                           title: h(request[:title]),
