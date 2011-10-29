@@ -1,5 +1,4 @@
 $ ->
-        $.ajaxSetup
         $(".spinner img").css("display", "none");
         getpost = ->
                 $.get "board",  (data) ->
@@ -13,18 +12,27 @@ $ ->
         , 5000
 
         $("#comment-form").submit ->
+                $(".errors p").text("")
                 $('#mit').attr("disabled", "disabled");
                 $(".spinner img").css("display", "block")
                 $.post '/comment'
                         "name": $("#name").val()
                         "title": $("#title").val()
                         "message": $("#message").val()
-                setTimeout ->
-                        getpost()
-                        $(".spinner img").css("display", "none")
-                        $("#name").val ""
-                        $("#title").val ""
-                        $("#message").val ""
-                        $('#mit').removeAttr("disabled")
-                , 1000
+                        (data) ->
+                                setTimeout ->
+                                        true
+                                ,1000
+                                if data.auther or data.body
+                                        $(".errors p.auther").text(data.auther[0]) if data.auther
+                                        $(".errors p.body").text(data.body[0]) if data.body
+                                else
+                                        getpost()
+                                        $("#title").val ""
+                                        $("#message").val ""
+
+                                $(".spinner img").css("display", "none")
+                                $('#mit').removeAttr("disabled")
+
+                ,"JSON"
                 false

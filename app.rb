@@ -6,6 +6,7 @@ require './model/comment.rb'
 require 'haml'
 require 'sass'
 require 'coffee-script'
+require 'json'
 
 
 configure do
@@ -67,19 +68,16 @@ end
 
 post '/comment' do
   post = Comments::new (
-                        {auther: request[:name],
-                          title: request[:title],
-                          body: request[:message],
-                          posted_date: Time.now})
+                        {auther: h(request[:name]),
+                          title: h(request[:title]),
+                          body: h(request[:message]),
+                          posted_date: h(Time.now)})
   begin
     post.save
-    redirect '/'
+    {}.to_json
   rescue Sequel::ValidationFailed
-    @comments = Comments.order_by(:id.desc).paginate(1, 20)
-    haml :index, locals: {post: post}
+    post.errors.to_json
   end
-
-
 end
 
 

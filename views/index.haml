@@ -2,10 +2,6 @@
 
 %script{src: "app.js", type: "text/javascript"}
 
-- if post then
-  - post.errors.each do |k,v|
-    %p= v[0]
-
 %form{:id => "comment-form"}
   %table
     %tr
@@ -26,8 +22,9 @@
         %input{:type => "submit", :id => "mit"}
     .spinner
       %img{src: "indicator.white.gif"}
-
-
+    .errors
+      %p.auther
+      %p.body
 = partial_haml :paginate
 .comments
   - @comments.each do |comment|
@@ -38,7 +35,7 @@
         - else
           %h2= h comment.title
         %span.auther== by #{h comment.auther}
-        %span.date== (#{h comment.date})
+        %span.date== #{comment.date} +0900
       .message
         = comment.formatted_message
 = partial_haml :paginate
