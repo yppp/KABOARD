@@ -1,4 +1,5 @@
 $ ->
+        $.ajaxSetup
         $(".spinner img").css("display", "none");
         getpost = ->
                 $.get "board",  (data) ->
@@ -9,7 +10,7 @@ $ ->
                 $(".spinner img").css("display", "block");
                 getpost()
                 $(".spinner img").css("display", "none");
-        , 5000
+        , 10000
 
         $("#comment-form").submit ->
                 $('#mit').attr("disabled", "disabled");
