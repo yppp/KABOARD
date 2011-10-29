@@ -10,7 +10,7 @@ $ ->
                 $(".spinner img").css("display", "block");
                 getpost()
                 $(".spinner img").css("display", "none");
-        , 10000
+        , 5000
 
         $("#comment-form").submit ->
                 $('#mit').attr("disabled", "disabled");
@@ -19,11 +19,12 @@ $ ->
                         "name": $("#name").val()
                         "title": $("#title").val()
                         "message": $("#message").val()
-                        (data) ->
-                                getpost()
-                                $(".spinner img").css("display", "none")
-                                $("#name").val ""
-                                $("#title").val ""
-                                $("#message").val ""
-                                $('#mit').removeAttr("disabled")
+                setTimeout ->
+                        getpost()
+                        $(".spinner img").css("display", "none")
+                        $("#name").val ""
+                        $("#title").val ""
+                        $("#message").val ""
+                        $('#mit').removeAttr("disabled")
+                , 0
                 false
