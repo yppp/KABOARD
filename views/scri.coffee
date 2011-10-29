@@ -26,5 +26,5 @@ $ ->
                         $("#title").val ""
                         $("#message").val ""
                         $('#mit').removeAttr("disabled")
-                , 0
+                , 1000
                 false
