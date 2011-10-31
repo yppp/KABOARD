@@ -1,4 +1,7 @@
 $ ->
+        $.ajaxSetup
+                cache: false
+
         $(".spinner img").css("display", "none");
         getpost = ->
                 $.get "board",  (data) ->
